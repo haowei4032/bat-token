@@ -46,6 +46,9 @@ body > div.address {
 body > div.address > span {
 	margin-right: 8px;
 }
+body > div.address > span + span {
+	cursor: pointer;
+}
 body > a {
 	background: #fff;
     border: 3px solid rgba(255,255,255,.6);
@@ -96,7 +99,6 @@ body > div.toast {
     opacity: 0;
     bottom: 0;
     user-select: none;
-    cursor: pointer;
     /*transition: transform .75s ease-out;*/
 }
 @keyframes slide-in {
