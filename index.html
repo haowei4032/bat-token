@@ -115,7 +115,7 @@ document.querySelector('body > span').addEventListener('click', function() {
 	})
 	this.innerText = this.innerText === 'CN' ? 'EN' : 'CN'
 })
-if (localStorage.getItem('lang') !== 'EN') document.querySelector('body > span').click()
+if (localStorage.getItem('lang') !== 'EN' && ['EN','CN'].includes(localStorage.getItem('lang'))) document.querySelector('body > span').click()
 </script>
 </body>
 </html>
