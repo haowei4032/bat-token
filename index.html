@@ -96,7 +96,7 @@ body > span:hover {
 </head>
 
 <body>
-  <span>EN</span>
+  <span>CN</span>
   <img src="logo.png" width="256">
   <div>BAT Token</div>
   <div>BEP20 of High-quality DeFi tokens with a total supply of 100,000,000, We've locked in 100% liquidity</div>
@@ -109,10 +109,10 @@ const translator = [
 	[text => { document.querySelector('body > a').innerText = text }, {EN:'Buy', CN:'购买'}]
 ]
 document.querySelector('body > span').addEventListener('click', function() {
-	this.innerText = this.innerText === 'CN' ? 'EN' : 'CN'
 	translator.forEach(v => {
 		v[0](v[1][this.innerText])
 	})
+	this.innerText = this.innerText === 'CN' ? 'EN' : 'CN'
 })
 </script>
 </body>
