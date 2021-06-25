@@ -90,12 +90,36 @@ body > div.toast {
     background: rgba(235,235,235,.85);
     color: #444;
     line-height: 36px;
-    padding: 0 16px;
+    padding: 0 24px;
     position: absolute;
     z-index: 999;
     opacity: 0;
     bottom: 0;
-    transition: transform .75s ease-out;
+    user-select: none;
+    /*transition: transform .75s ease-out;*/
+}
+@keyframes slide-in {
+	from {
+		opacity: 0;
+		transform: translate3d(0,0,0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0,-102px,0);
+	}
+}
+@keyframes slide-out {
+	from {
+		opacity: 1;
+		transform: translate3d(0,-102px,0);
+	}
+	to {
+		opacity: 0;
+		transform: translate3d(0,0,0);
+	}
+}
+body > div.toast[animation] {
+	animation: slide-in .75s forwards, slide-out .75s 3s forwards;
 }
 @media screen and (max-width: 414px) {
 	body > img {
@@ -142,6 +166,7 @@ body > div.toast {
 <script>
 const translator = [
 	[text => { document.title = text }, {EN:'BAT Token - BEP20 of High-quality tokens', CN:'蝙蝠币 - 币安智能链高质量代币'}],
+	[text => { document.querySelector('body > div.toast').innerText = text }, {EN:'Contract address copied successfully', CN:'合约地址复制成功'}],
 	[text => { document.querySelector('body > div.title').innerText = text }, {EN:'BAT Token', CN:'蝙蝠币'}],
 	[text => { document.querySelector('body > div.descript').innerText = text }, {EN:'BEP20 of High-quality DeFi tokens with a total supply of 100,000,000, We\'ve locked in 100% liquidity', CN:'币安智能链高质量中去心化代币发行总量1亿枚，我们已经锁定了100%的流动性'}],
 	[text => { document.querySelector('body > div.address > span').innerText = text }, {EN:'Contract address:', CN:'合约地址:'}],
@@ -162,12 +187,10 @@ document.querySelector('body > div.address > span + span').addEventListener('cli
 	memInput.select()
 	document.execCommand('Copy')
 	document.body.removeChild(memInput)
-	document.querySelector('div.toast').style.transform = 'translate3d(0, -120px, 0)'
-	document.querySelector('div.toast').style.opacity = 1
+	document.querySelector('div.toast').setAttribute('animation', true)
 	setTimeout(() => {
-		document.querySelector('div.toast').style.transform = 'translate3d(0, 0, 0)'
-		document.querySelector('div.toast').style.opacity = 0
-	}, 1500)
+		document.querySelector('div.toast').removeAttribute('animation')
+	}, 4000)
 })
 if (localStorage.getItem('lang') !== 'EN' && ['EN','CN'].includes(localStorage.getItem('lang'))) document.querySelector('body > span').click()
 </script>
