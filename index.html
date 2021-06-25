@@ -33,10 +33,18 @@ body > div {
 	font-size: 32px;
 	margin-top: 24px;
 }
-body > div + div {
+body > div.descript {
 	font-size: 20px;
 	margin-top: 8px;
 	color: rgba(255,255,255,.65);
+}
+body > div.address {
+	margin-top: 24px;
+	font-size: 18px;
+	color: rgba(255,255,255,.65);
+}
+body > div.address > span {
+	margin-right: 8px;
 }
 body > a {
 	background: #fff;
@@ -46,7 +54,7 @@ body > a {
     line-height: 36px;
     width: 108px;
     border-radius: 36px;
-    margin-top: 72px;
+    margin-top: 96px;
     text-decoration: none;
     display: block;
     cursor: pointer;
@@ -80,10 +88,22 @@ body > span:hover {
 	body > div {
 		font-size: 24px;
 	}
-	body > div + div {
+	body > div.descript {
 		font-size: 16px;
 		margin-left: 16px;
 		margin-right: 16px;
+	}
+	body > div.address {
+		line-height: 1.5;
+		word-wrap: break-word;
+	    word-break: break-word;
+	    font-size: 14px;
+	    margin-left: 16px;
+		margin-right: 16px;
+		width: calc(100% - 32px);
+	}
+	body > div.address > span {
+		display: block;
 	}
 	body > img {
 		width: 128px;
@@ -98,14 +118,16 @@ body > span:hover {
 <body>
   <span>CN</span>
   <img src="logo.png" width="256">
-  <div>BAT Token</div>
-  <div>BEP20 of High-quality DeFi tokens with a total supply of 100,000,000, We've locked in 100% liquidity</div>
+  <div class="title">BAT Token</div>
+  <div class="descript">BEP20 of High-quality DeFi tokens with a total supply of 100,000,000, We've locked in 100% liquidity</div>
+  <div class="address"><span>Contract address: </span>0x8f348f9b9A69750CE9e16B143422DF732388ABe1</div>
   <a href="//exchange.pancakeswap.finance/#/swap?inputCurrency=BNB&outputCurrency=0x8f348f9b9a69750ce9e16b143422df732388abe1" target="_blank">Buy</a>
 <script>
 const translator = [
 	[text => { document.title = text }, {EN:'BAT Token - BEP20 of High-quality tokens', CN:'蝙蝠币 - 币安智能链高质量代币'}],
 	[text => { document.querySelector('body > div').innerText = text }, {EN:'BAT Token', CN:'蝙蝠币'}],
 	[text => { document.querySelector('body > div + div').innerText = text }, {EN:'BEP20 of High-quality DeFi tokens with a total supply of 100,000,000, We\'ve locked in 100% liquidity', CN:'币安智能链高质量中去心化代币发行总量1亿枚，我们已经锁定了100%的流动性'}],
+	[text => { document.querySelector('body > div + div + div > span').innerText = text }, {EN:'Contract address:', CN:'合约地址:'}],
 	[text => { document.querySelector('body > a').innerText = text }, {EN:'Buy', CN:'购买'}]
 ]
 document.querySelector('body > span').addEventListener('click', function() {
