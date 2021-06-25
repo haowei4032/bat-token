@@ -162,7 +162,7 @@ document.querySelector('body > div.address > span + span').addEventListener('cli
 	memInput.select()
 	document.execCommand('Copy')
 	document.body.removeChild(memInput)
-	document.querySelector('div.toast').style.transform = 'translate3d(0, -160px, 0)'
+	document.querySelector('div.toast').style.transform = 'translate3d(0, -120px, 0)'
 	document.querySelector('div.toast').style.opacity = 1
 })
 if (localStorage.getItem('lang') !== 'EN' && ['EN','CN'].includes(localStorage.getItem('lang'))) document.querySelector('body > span').click()
