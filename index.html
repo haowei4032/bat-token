@@ -109,11 +109,13 @@ const translator = [
 	[text => { document.querySelector('body > a').innerText = text }, {EN:'Buy', CN:'购买'}]
 ]
 document.querySelector('body > span').addEventListener('click', function() {
+	localStorage.setItem('lang', this.innerText)
 	translator.forEach(v => {
 		v[0](v[1][this.innerText])
 	})
 	this.innerText = this.innerText === 'CN' ? 'EN' : 'CN'
 })
+if (localStorage.getItem('lang') !== 'EN') document.querySelector('body > span').click()
 </script>
 </body>
 </html>
