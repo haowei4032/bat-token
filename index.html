@@ -183,6 +183,7 @@ document.querySelector('body > span').addEventListener('click', function() {
 	this.innerText = this.innerText === 'CN' ? 'EN' : 'CN'
 })
 document.querySelector('body > div.address > span + span').addEventListener('click', function() {
+	if (document.querySelector('div.toast').getAttribute('animation')) return false
 	let memInput = document.createElement('input')
 	memInput.type = 'text'
 	memInput.value = this.innerText
