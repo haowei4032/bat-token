@@ -164,6 +164,10 @@ document.querySelector('body > div.address > span + span').addEventListener('cli
 	document.body.removeChild(memInput)
 	document.querySelector('div.toast').style.transform = 'translate3d(0, -120px, 0)'
 	document.querySelector('div.toast').style.opacity = 1
+	setTimeout(() => {
+		document.querySelector('div.toast').style.transform = 'translate3d(0, 0, 0)'
+		document.querySelector('div.toast').style.opacity = 0
+	}, 1500)
 })
 if (localStorage.getItem('lang') !== 'EN' && ['EN','CN'].includes(localStorage.getItem('lang'))) document.querySelector('body > span').click()
 </script>
