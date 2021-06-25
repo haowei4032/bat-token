@@ -189,6 +189,7 @@ document.querySelector('body > div.address > span + span').addEventListener('cli
 	memInput.type = 'text'
 	memInput.value = this.innerText
 	document.body.appendChild(memInput)
+	memInput.focus()
 	memInput.select()
 	document.execCommand('Copy')
 	document.body.removeChild(memInput)
