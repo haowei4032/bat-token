@@ -167,6 +167,7 @@ body > div.toast[animation] {
   <div class="descript">BEP20 of High-quality DeFi tokens with a total supply of 100,000,000, We've locked in 100% liquidity</div>
   <div class="address"><span>Contract address: </span><span>0x8f348f9b9A69750CE9e16B143422DF732388ABe1</span></div>
   <a href="//exchange.pancakeswap.finance/#/swap?inputCurrency=BNB&outputCurrency=0x8f348f9b9a69750ce9e16b143422df732388abe1" target="_blank">Buy</a>
+<script src="//static.runoob.com/assets/clipboard.min.js"></script>
 <script>
 const translator = [
 	[text => { document.title = text }, {EN:'BAT Token - BEP20 of High-quality tokens', CN:'蝙蝠币 - 币安智能链高质量代币'}],
@@ -183,21 +184,21 @@ document.querySelector('body > span').addEventListener('click', function() {
 	})
 	this.innerText = this.innerText === 'CN' ? 'EN' : 'CN'
 })
-document.querySelector('body > div.address > span + span').addEventListener('click', function() {
+let clipboard = new Clipboard('body > div.address > span + span')
+clipboard.on('success', function() {
 	if (document.querySelector('div.toast').getAttribute('animation')) return false
-	let memInput = document.createElement('input')
-	memInput.type = 'text'
-	memInput.value = this.innerText
-	document.body.appendChild(memInput)
-	memInput.focus()
-	memInput.select()
-	document.execCommand('Copy')
-	document.body.removeChild(memInput)
 	document.querySelector('div.toast').setAttribute('animation', true)
 	setTimeout(() => {
 		document.querySelector('div.toast').removeAttribute('animation')
 	}, 4000)
 })
+/*document.querySelector('body > div.address > span + span').addEventListener('click', function() {
+	if (document.querySelector('div.toast').getAttribute('animation')) return false
+	document.querySelector('div.toast').setAttribute('animation', true)
+	setTimeout(() => {
+		document.querySelector('div.toast').removeAttribute('animation')
+	}, 4000)
+})*/
 if (localStorage.getItem('lang') !== 'EN' && ['EN','CN'].includes(localStorage.getItem('lang'))) document.querySelector('body > span').click()
 </script>
 </body>
